@@ -20,7 +20,7 @@ RUN ln -s /usr/bin/python3 /usr/bin/python
 # Checkout emacs configuration from github
 RUN git clone --depth 1 \
         https://github.com/humitos/emacs-configuration.git /code \
-        cd /code \
+        && cd /code \
         && git submodule init
         && git submodule update
 
