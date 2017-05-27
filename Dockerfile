@@ -37,7 +37,7 @@ RUN pip3 install --no-cache-dir -U pip
 RUN pip3 install --no-cache-dir -r requirements.elpy.in
 
 # Compile helm
-RUN cd vendor/helm && make
+RUN ./bin/compile_helm
 
 # Set the `emacs-user-directory` used from the `init.el` file
 ENV EMACS_USER_DIRECTORY /code/
