@@ -26,6 +26,11 @@ RUN git clone --depth 1 \
 
 WORKDIR /code
 
+# Download snippets and yasmate for yasnippet
+RUN cd vendor/yasnippet && \
+    git submodule init && \
+    git submodule update
+
 RUN mkdir -p /root/.fonts
 RUN mv -f Menlo-Regular.ttf /root/.fonts
 
