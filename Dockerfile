@@ -41,8 +41,12 @@ RUN mv -f startup.d/erc.el startup.d/erc.el.disabled
 RUN pip3 install --no-cache-dir -U pip
 RUN pip3 install --no-cache-dir -r requirements.elpy.in
 
-# Compile helm
+# Compile needed dependencies
 RUN ./bin/compile_helm
+
+# FIXME: can't be compiled in Alpine Linux
+# RUN ./bin/compile_ctags
+# RUN ./bin/compile_silversearcher
 
 # Set the `emacs-user-directory` used from the `init.el` file
 ENV EMACS_USER_DIRECTORY /code/
