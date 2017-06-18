@@ -12,7 +12,8 @@ RUN apk add --no-cache \
         diffutils \
         ctags \
         ack \
-        aspell
+        aspell \
+        aspell-en
 
 # Make `python` the default for `python3`
 RUN ln -s /usr/bin/python3 /usr/bin/python
