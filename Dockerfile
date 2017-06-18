@@ -38,6 +38,9 @@ RUN mv -f Menlo-Regular.ttf /root/.fonts
 # Disable ERC
 RUN mv -f startup.d/erc.el startup.d/erc.el.disabled
 
+# Disable magithub since it requires the API KEY
+RUN mv -f startup.d/magithub.el startup.d/magithub.el.disabled
+
 # Install python dependecies for emacs' plugins
 RUN pip3 install --no-cache-dir -U pip
 RUN pip3 install --no-cache-dir -r requirements.elpy.in
