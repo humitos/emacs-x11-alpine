@@ -42,7 +42,7 @@ RUN mv -f startup.d/erc.el startup.d/erc.el.disabled
 RUN mv -f startup.d/magithub.el startup.d/magithub.el.disabled
 
 # Install python dependecies for emacs' plugins
-RUN apk add --nocache py3-lxml  # avoid compiling it (requires gcc g++ python3-dev libxslt-dev, etc)
+RUN apk add --no-cache py3-lxml  # avoid compiling it (requires gcc g++ python3-dev libxslt-dev, etc)
 RUN pip3 install --no-cache-dir -U pip
 RUN pip3 install --no-cache-dir -r requirements.elpy.in
 
