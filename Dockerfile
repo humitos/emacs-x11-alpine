@@ -27,16 +27,10 @@ RUN git clone --depth 1 \
 
 WORKDIR /code
 
-# Download snippets and yasmate for yasnippet
-RUN cd vendor/yasnippet && \
-    git submodule init && \
-    git submodule update
-
 RUN mkdir -p /root/.fonts
 RUN mv -f Menlo-Regular.ttf /root/.fonts
 
-# Disable ERC
-# RUN mv -f startup.d/erc.el startup.d/erc.el.disabled
+# Disable Circe IRC
 RUN mv -f startup.d/circe.el startup.d/circe.disabled
 
 # Disable magithub since it requires the API KEY
@@ -46,9 +40,6 @@ RUN mv -f startup.d/magithub.el startup.d/magithub.el.disabled
 RUN apk add --no-cache py3-lxml  # avoid compiling it (requires gcc g++ python3-dev libxslt-dev, etc)
 RUN pip3 install --no-cache-dir -U pip
 RUN pip3 install --no-cache-dir -r requirements.elpy.in
-
-# Compile needed dependencies
-RUN ./bin/compile_helm
 
 # FIXME: can't be compiled in Alpine Linux
 # RUN ./bin/compile_ctags
@@ -60,6 +51,7 @@ ENV EMACS_USER_DIRECTORY /code/
 # Used to set the proper ctags executable
 ENV DOCKER true
 
+RUN emacs --batch --eval '(load-file ".emacs.docker")'
 
 WORKDIR /src
 
